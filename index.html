@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tham Kaeoket</title>
-<meta name="description" content="Tham Kaeoket, Junior DevOps / Cloud Engineer in Chanthaburi, Thailand. Infrastructure automation, Linux, Docker, CI/CD.">
+<meta name="description" content="Tham Kaeoket, Junior DevOps / Cloud Engineer in Thailand. Infrastructure automation, Linux, Docker, CI/CD.">
 <meta property="og:title" content="Tham Kaeoket, Junior DevOps / Cloud Engineer">
 <meta property="og:description" content="Automated a 1–2 hour morning server check down to ~5 minutes across 11 production servers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -249,7 +249,7 @@ const out=document.getElementById("out"),cmd=document.getElementById("cmd");
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 function pr(h,c){const d=document.createElement("div");if(c)d.className=c;d.innerHTML=h;out.append(d);out.scrollTop=out.scrollHeight}
 const C={help:()=>pr("whoami · ls projects · cat &lt;project&gt; · skills · contact · resume · clear"),
- whoami:()=>pr("Tham Kaeoket, Junior DevOps / Cloud Engineer, Chanthaburi TH.\nI like scripts that delete boring work."),
+ whoami:()=>pr("Tham Kaeoket, Junior DevOps / Cloud Engineer, Thailand.\nI like scripts that delete boring work."),
  ls:()=>pr(Object.keys(P).map(k=>`<span class="ok">${k}/</span>`).join("  ")),
  cat:a=>{const p=P[(a[0]||"").replace(/\/$/,"")];p?pr(`<span class="p"># ${p[0]}</span>\n`+p.slice(1).map(esc).join("\n")):pr(`cat: ${esc(a[0]||"")}: try ls projects`,"dim")},
  skills:()=>pr("cloud/devops  docker compose nginx github-actions linux aix ssh\nscripting     bash python typescript n8n\nlearning      aws terraform ansible prometheus grafana"),
