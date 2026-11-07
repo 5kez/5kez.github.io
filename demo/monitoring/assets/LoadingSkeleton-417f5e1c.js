@@ -1,0 +1,6 @@
+import{P as a,j as e}from"./index-91aacc61.js";import"./recharts-vendor-d0839281.js";import{u as p}from"./dateUtils-afc941b1.js";const c=()=>{const i=p(),n=i.bgSecondary||"#f6f8fa",o=i.bg||"#ffffff",s=i.border||"#d0d7de",t=`linear-gradient(90deg, ${o} 0%, ${n} 50%, ${o} 100%)`,d=`linear-gradient(180deg, ${n} 0%, ${s} 100%)`;return e.jsxs("div",{style:{width:"100%",height:"280px",background:i.bg||"#ffffff",border:`1px solid ${s}`,borderRadius:"8px",padding:"16px",display:"flex",flexDirection:"column",gap:"12px"},children:[e.jsx("style",{children:`
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+      `}),e.jsx("div",{style:{flex:1,display:"flex",alignItems:"flex-end",gap:"8px",paddingBottom:"8px"},children:Array.from({length:12}).map((l,r)=>{const m=Math.random()*60+30;return e.jsx("div",{style:{flex:1,height:`${m}%`,background:d,borderRadius:"4px 4px 0 0",animation:"shimmer 2s infinite linear",backgroundSize:"1000px 100%",animationDelay:`${r*.1}s`}},r)})}),e.jsx("div",{style:{display:"flex",gap:"8px"},children:Array.from({length:12}).map((l,r)=>e.jsx("div",{style:{flex:1,height:"12px",background:t,backgroundSize:"1000px 100%",animation:"shimmer 2s infinite linear",borderRadius:"4px",animationDelay:`${r*.05}s`}},r))})]})};a.number,a.number;export{c as C};

@@ -110,6 +110,7 @@ footer{font:.78rem var(--mono);color:var(--muted)}
   <div class="name">tham<span>@</span>skez:~$</div>
   <nav aria-label="Main">
     <button class="chip" id="lang" type="button">TH</button>
+    <a class="chip en" href="#demos">demos</a><a class="chip th" href="#demos">demo</a>
     <a class="chip en" href="#work">work</a><a class="chip th" href="#work">ผลงาน</a>
     <a class="chip en" href="#docs">documents</a><a class="chip th" href="#docs">เอกสาร</a>
     <a class="chip en" href="#contact">contact</a><a class="chip th" href="#contact">ติดต่อ</a>
@@ -135,6 +136,26 @@ footer{font:.78rem var(--mono);color:var(--muted)}
 </div>
 
 <main style="display:grid;gap:44px">
+  <section id="demos">
+    <h2><span class="en">Live demos</span><span class="th">ทดลองใช้งานจริง</span></h2>
+    <div class="docs">
+      <div class="doc">
+        <h3>Automate Daily Monitoring</h3>
+        <div class="meta"><span class="en">React dashboard · n8n data · anonymized sample</span><span class="th">React dashboard · ข้อมูลจาก n8n · ข้อมูลตัวอย่างที่ปิดชื่อแล้ว</span></div>
+        <p style="margin:0;color:var(--muted);font-size:.95rem" class="en">The internship dashboard running on sample data: server overview, trend charts, disk, tablespace, AIX error reports, PDF export.</p>
+        <p style="margin:0;color:var(--muted);font-size:.95rem" class="th">dashboard จากงานฝึกงาน รันด้วยข้อมูลตัวอย่าง: ภาพรวมเซิร์ฟเวอร์ กราฟแนวโน้ม disk tablespace error report ของ AIX และส่งออก PDF</p>
+        <a class="dl" href="demo/monitoring/"><span class="en">open demo →</span><span class="th">เปิด demo →</span></a>
+      </div>
+      <div class="doc">
+        <h3>skez.codes</h3>
+        <div class="meta"><span class="en">this site · static · GitHub Pages · custom domain</span><span class="th">เว็บนี้ · static · GitHub Pages · โดเมนของตัวเอง</span></div>
+        <p style="margin:0;color:var(--muted);font-size:.95rem" class="en">Bilingual portfolio with a working terminal. Moving to AWS S3 + CloudFront with Terraform next.</p>
+        <p style="margin:0;color:var(--muted);font-size:.95rem" class="th">พอร์ตโฟลิโอ 2 ภาษาพร้อม terminal ที่พิมพ์คำสั่งได้ ขั้นต่อไปย้ายไป AWS S3 + CloudFront ด้วย Terraform</p>
+        <a class="dl" href="https://github.com/5kez/5kez.github.io"><span class="en">source →</span><span class="th">ดูโค้ด →</span></a>
+      </div>
+    </div>
+  </section>
+
   <section id="work">
     <h2><span class="en">Experience</span><span class="th">ประสบการณ์ทำงาน</span></h2>
     <div class="card">
@@ -249,17 +270,18 @@ const P={automonitor:["Automate Daily Monitoring (internship)","problem   1–2 
 const out=document.getElementById("out"),cmd=document.getElementById("cmd");
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 function pr(h,c){const d=document.createElement("div");if(c)d.className=c;d.innerHTML=h;out.append(d);out.scrollTop=out.scrollHeight}
-const C={help:()=>pr("whoami · ls projects · cat &lt;project&gt; · skills · contact · resume · clear"),
+const C={help:()=>pr("whoami · ls projects · cat &lt;project&gt; · demo · skills · contact · resume · clear"),
  whoami:()=>pr("Tham Kaeoket, Junior DevOps / Cloud Engineer, Thailand.\nI like scripts that delete boring work."),
  ls:()=>pr(Object.keys(P).map(k=>`<span class="ok">${k}/</span>`).join("  ")),
  cat:a=>{const p=P[(a[0]||"").replace(/\/$/,"")];p?pr(`<span class="p"># ${p[0]}</span>\n`+p.slice(1).map(esc).join("\n")):pr(`cat: ${esc(a[0]||"")}: try ls projects`,"dim")},
  skills:()=>pr("cloud/devops  docker compose nginx github-actions linux aix ssh\nscripting     bash python typescript n8n\nlearning      aws terraform ansible prometheus grafana"),
  contact:()=>pr('call   <a href="tel:+66624739152">062-473-9152</a>\nemail  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tham.kaeoket@gmail.com" target="_blank" rel="noopener">tham.kaeoket@gmail.com</a>\ndiscord <a href="https://discord.com/users/429980296604155906" target="_blank" rel="noopener">429980296604155906</a>'),
  resume:()=>pr(`<a href="${LANG==="th"?"resume-th.pdf":"resume.pdf"}">${LANG==="th"?"resume-th.pdf":"resume.pdf"}</a>`),
+ demo:()=>{pr('opening demo/monitoring ...','dim');setTimeout(()=>location.href='demo/monitoring/',400)},
  clear:()=>{out.innerHTML=""},sudo:()=>pr("nice try. this incident will be reported.","dim")};
 function run(line){const r=line.trim();pr(`<span class="p">tham@skez:~$</span> ${esc(r)}`);if(!r)return;const[c,...a]=r.split(/\s+/);(C[c.toLowerCase()]||(()=>pr(`${esc(c)}: command not found. type <span class="p">help</span>`,"dim")))(a)}
 document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();run(cmd.value);cmd.value=""});
-const chips=document.getElementById("chips");["whoami","ls projects","cat automonitor","cat smartbed","contact"].forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c;b.onclick=()=>run(c);chips.append(b)});
+const chips=document.getElementById("chips");["whoami","ls projects","cat automonitor","demo","contact"].forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c;b.onclick=()=>run(c);chips.append(b)});
 /* boot: type the first commands so the shell feels alive */
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 async function typeRun(c){if(reduce){run(c);return}const line=document.createElement("div");line.innerHTML='<span class="p">tham@skez:~$</span> <span class="t"></span><span class="caret"></span>';out.append(line);const t=line.querySelector(".t");
