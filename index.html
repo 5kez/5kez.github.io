@@ -4,132 +4,163 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tham Kaeoket</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Tham Kaeoket — Junior DevOps / Cloud Engineer in Thailand. Infrastructure automation, Linux, Docker, CI/CD.">
+<meta name="description" content="Tham Kaeoket, Junior DevOps / Cloud Engineer in Chanthaburi, Thailand. Infrastructure automation, Linux, Docker, CI/CD.">
+<meta property="og:title" content="Tham Kaeoket, Junior DevOps / Cloud Engineer">
+<meta property="og:description" content="Automated a 1–2 hour morning server check down to ~5 minutes across 11 production servers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-/* Layout: one column; a working shell is the hero, a plain readable résumé sits under it (or replaces it in "read" mode) */
+/* Layout: a 3D infrastructure map is the hero (nodes = projects); an info panel slides over it; a plain résumé follows for scanning and print */
 :root{
-  --bg:#f3f1ea; --panel:#fbfaf6; --ink:#20232a; --muted:#5f6470; --line:#d9d5c8;
-  --amber:#a8590a; --amber-soft:#f1e3cf; --ok:#2f7a4a;
+  --bg:#0c0f15; --bg2:#121722; --panel:rgba(18,23,34,.86); --ink:#e9e6dc; --muted:#98a0ae; --line:#283041;
+  --amber:#f0a443; --ice:#8fb8ff; --ok:#6fcf8f;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace; --sans:"IBM Plex Sans",system-ui,sans-serif;
-  color-scheme:light;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161b;--panel:#1b1e25;--ink:#e8e4da;--muted:#9a9fab;--line:#2c3039;--amber:#f0a443;--amber-soft:#3a2c18;--ok:#6fcf8f;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#14161b;--panel:#1b1e25;--ink:#e8e4da;--muted:#9a9fab;--line:#2c3039;--amber:#f0a443;--amber-soft:#3a2c18;--ok:#6fcf8f;color-scheme:dark}
 *{box-sizing:border-box}
-html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;font-size:16px}
 a{color:var(--amber)}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-.wrap{max-width:880px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px}
-header{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:baseline;justify-content:space-between}
-.name{font-family:var(--mono);font-weight:600;font-size:1.05rem;letter-spacing:.02em}
-.name span{color:var(--amber)}
-nav{display:flex;gap:6px;flex-wrap:wrap}
-nav button{font:500 .85rem var(--mono);background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer}
-nav button[aria-pressed="true"]{color:var(--ink);border-color:var(--amber);background:var(--amber-soft)}
-.intro h1{font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.15;margin:0 0 10px;text-wrap:balance;font-weight:600}
-.intro p{margin:0;max-width:62ch;color:var(--muted);font-size:1.05rem}
-.stat{display:inline-block;font-family:var(--mono);color:var(--amber);font-weight:600}
-/* terminal */
-.term{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);font:.78rem var(--mono);color:var(--muted)}
-.bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:inline-block}
-.out{font:14px/1.6 var(--mono);padding:14px 16px;height:360px;overflow-y:auto;white-space:pre-wrap;overflow-wrap:anywhere}
-.out .p{color:var(--amber)} .out .ok{color:var(--ok)} .out .dim{color:var(--muted)}
-.out a{color:var(--amber)}
-.in{display:flex;gap:8px;align-items:center;border-top:1px solid var(--line);padding:10px 16px;font:14px var(--mono)}
-.in label{color:var(--amber);white-space:nowrap}
-.in input{flex:1;min-width:0;background:transparent;border:0;color:var(--ink);font:inherit;outline:none}
-.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px}
-.chips button{font:.78rem var(--mono);background:var(--amber-soft);color:var(--ink);border:0;border-radius:4px;padding:4px 9px;cursor:pointer}
-/* readable */
-section h2{font:600 .8rem var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--amber);margin:0 0 14px}
-.card{border-top:1px solid var(--line);padding:18px 0;display:grid;gap:6px}
-.card h3{margin:0;font-size:1.1rem;font-weight:600}
-.meta{font:.82rem var(--mono);color:var(--muted)}
-.card ul{margin:4px 0 0;padding-left:18px}.card li{margin:3px 0}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-.tags span{font:.75rem var(--mono);border:1px solid var(--line);border-radius:4px;padding:2px 7px;color:var(--muted)}
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.skills div{min-width:0}.skills b{display:block;font:600 .85rem var(--mono);margin-bottom:4px}
-.skills p{margin:0;color:var(--muted);font-size:.95rem}
-.contact{display:flex;flex-wrap:wrap;gap:10px 22px;font-family:var(--mono);font-size:.92rem}
-footer{font:.78rem var(--mono);color:var(--muted)}
-[hidden]{display:none!important}
-@media (max-width:520px){.out{height:300px;font-size:13px}}
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+/* top bar */
+.top{position:fixed;inset:0 0 auto;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px;pointer-events:none}
+.top>*{pointer-events:auto}
+.brand{font:600 .95rem var(--mono);letter-spacing:.02em}.brand b{color:var(--amber);font-weight:600}
+.links{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.links a,.links button{font:500 .8rem var(--mono);color:var(--ink);background:rgba(12,15,21,.6);border:1px solid var(--line);border-radius:6px;padding:6px 11px;text-decoration:none;cursor:pointer;backdrop-filter:blur(6px)}
+.links a:hover,.links button:hover{border-color:var(--amber)}
+/* hero */
+.hero{position:relative;height:88svh;min-height:560px;overflow:hidden;background:radial-gradient(1200px 600px at 70% 40%,#16203a 0%,var(--bg) 60%)}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+#gl:active{cursor:grabbing}
+.headline{position:absolute;left:0;bottom:56px;z-index:5;max-width:640px;pointer-events:none}
+.headline h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;margin:0 0 12px;font-weight:600;text-wrap:balance}
+.headline h1 span{color:var(--amber)}
+.headline p{margin:0;color:var(--muted);max-width:52ch}
+.hint{font:.75rem var(--mono);color:var(--muted);margin-top:14px;letter-spacing:.04em}
+.labels{position:absolute;inset:0;pointer-events:none;z-index:4}
+.lbl{position:absolute;transform:translate(-50%,-160%);font:600 .72rem var(--mono);color:var(--ink);background:rgba(12,15,21,.72);border:1px solid var(--line);padding:3px 8px;border-radius:4px;white-space:nowrap;pointer-events:auto;cursor:pointer;transition:border-color .2s}
+.lbl:hover,.lbl.on{border-color:var(--amber);color:var(--amber)}
+.lbl small{color:var(--muted);font-weight:400;margin-left:6px}
+/* panel */
+.panel{position:absolute;z-index:10;top:84px;right:max(20px,env(safe-area-inset-right,0px));width:min(420px,calc(100% - 40px));max-height:calc(100% - 120px);overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;backdrop-filter:blur(10px);transform:translateX(24px);opacity:0;pointer-events:none;transition:transform .35s ease,opacity .35s ease}
+.panel.open{transform:none;opacity:1;pointer-events:auto}
+.panel .k{font:.72rem var(--mono);color:var(--amber);letter-spacing:.12em;text-transform:uppercase}
+.panel h2{margin:4px 0 6px;font-size:1.3rem;line-height:1.25}
+.panel .meta{font:.78rem var(--mono);color:var(--muted)}
+.panel ul{padding-left:18px;margin:10px 0}.panel li{margin:4px 0}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}
+.metrics div{border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:0}
+.metrics b{display:block;font:600 1.25rem var(--mono);color:var(--amber);font-variant-numeric:tabular-nums}
+.metrics span{font-size:.78rem;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.tags span{font:.72rem var(--mono);border:1px solid var(--line);border-radius:4px;padding:2px 7px;color:var(--muted)}
+.close{position:absolute;top:10px;right:10px;background:none;border:1px solid var(--line);color:var(--muted);font:.75rem var(--mono);border-radius:4px;padding:3px 8px;cursor:pointer}
+/* terminal drawer */
+.term{position:absolute;z-index:9;left:max(20px,env(safe-area-inset-left,0px));top:84px;width:min(440px,calc(100% - 40px));background:var(--panel);border:1px solid var(--line);border-radius:10px;backdrop-filter:blur(10px);display:none}
+.term.open{display:block}
+.term .out{font:13px/1.55 var(--mono);padding:12px 14px;height:220px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.term .p{color:var(--amber)}.term .ok{color:var(--ok)}.term .dim{color:var(--muted)}
+.term form{display:flex;gap:8px;border-top:1px solid var(--line);padding:9px 14px;font:13px var(--mono)}
+.term label{color:var(--amber);white-space:nowrap}
+.term input{flex:1;min-width:0;background:transparent;border:0;color:var(--ink);font:inherit;outline:none}
+/* content */
+main{max-width:900px;margin:0 auto;padding-block:64px 80px;display:grid;gap:56px}
+section h2{font:600 .78rem var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--amber);margin:0 0 16px}
+.row{border-top:1px solid var(--line);padding:20px 0;display:grid;gap:6px}
+.row h3{margin:0;font-size:1.12rem;font-weight:600}
+.row .meta{font:.8rem var(--mono);color:var(--muted)}
+.row ul{margin:4px 0 0;padding-left:18px}.row li{margin:3px 0}
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.doc{border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;gap:6px;background:var(--bg2);min-width:0}
+.doc h3{margin:0;font-size:1rem}
+.doc .meta{font:.75rem var(--mono);color:var(--muted)}
+.doc a.btn,.doc span.btn{justify-self:start;font:600 .8rem var(--mono);border:1px solid var(--amber);color:var(--amber);border-radius:6px;padding:6px 12px;text-decoration:none;margin-top:4px}
+.doc span.btn{border-color:var(--line);color:var(--muted)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.skills div{min-width:0}.skills b{display:block;font:600 .82rem var(--mono);margin-bottom:4px}.skills p{margin:0;color:var(--muted)}
+.contact{display:flex;flex-wrap:wrap;gap:10px 24px;font:.9rem var(--mono)}
+footer{max-width:900px;margin:0 auto;padding-bottom:40px;font:.75rem var(--mono);color:var(--muted)}
+.nogl #gl,.nogl .labels,.nogl .hint{display:none}
+.nogl .hero{height:auto;min-height:0;padding-top:120px;padding-bottom:40px}
+.nogl .headline{position:static}
+@media (max-width:640px){.headline{bottom:32px}.panel{top:auto;bottom:16px;max-height:60%}.term{top:70px}.lbl{font-size:.66rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.panel{transition:none}}
 </style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <div class="name">tham<span>@</span>skez:~$</div>
-  <nav aria-label="View">
-    <button id="v-term" aria-pressed="true">terminal</button>
-    <button id="v-read" aria-pressed="false">read mode</button>
-    <a href="resume.pdf" style="font:500 .85rem var(--mono);padding:6px 12px;border:1px solid var(--line);border-radius:6px;text-decoration:none">resume.pdf</a>
+<header class="top gut">
+  <div class="brand">tham<b>@</b>skez</div>
+  <nav class="links" aria-label="Main">
+    <button id="tbtn" type="button" aria-expanded="false" aria-controls="term">terminal</button>
+    <a href="#work">work</a><a href="#docs">documents</a><a href="resume.pdf">resume.pdf</a>
   </nav>
 </header>
 
-<div class="intro">
-  <h1>Tham Kaeoket — Junior DevOps / Cloud Engineer</h1>
-  <p>I write the scripts and pipelines that make repetitive operations work disappear. At my internship I automated the morning health check of 11 production servers, cutting it from <span class="stat">1–2 h</span> to <span class="stat">~5 min</span>.</p>
+<div class="hero" id="hero">
+  <canvas id="gl" aria-label="3D map of my projects. Drag to rotate, click a node to open it."></canvas>
+  <div class="labels" id="labels"></div>
+  <div class="headline gut">
+    <h1>Tham Kaeoket<br><span>Junior DevOps / Cloud Engineer</span></h1>
+    <p>I write the scripts and pipelines that make repetitive operations work disappear. At my internship I cut a 1–2 hour morning server check to about 5 minutes across 11 production servers.</p>
+    <div class="hint">drag to rotate · click a node · or scroll for the plain version</div>
+  </div>
+  <aside class="panel" id="panel" aria-live="polite"><button class="close" id="pclose" type="button">close</button><div id="pbody"></div></aside>
+  <div class="term" id="term">
+    <div class="out" id="out" role="log"></div>
+    <form id="tform" autocomplete="off"><label for="cmd">tham@skez:~$</label><input id="cmd" spellcheck="false" autocapitalize="off" placeholder="help"></form>
+  </div>
 </div>
 
-<div id="termview" class="term" aria-label="Interactive terminal">
-  <div class="bar"><i></i><i></i><i></i><span>bash — skez.codes</span></div>
-  <div id="out" class="out" role="log" aria-live="polite"></div>
-  <div class="chips" id="chips"></div>
-  <form class="in" id="form" autocomplete="off">
-    <label for="cmd">tham@skez:~$</label>
-    <input id="cmd" name="cmd" spellcheck="false" autocapitalize="off" placeholder="type help">
-  </form>
-</div>
-
-<main id="readview" hidden>
-  <section id="experience">
+<main class="gut">
+  <section id="work">
     <h2>Experience</h2>
-    <div class="card">
-      <h3>Cloud Engineer Intern — A-HOST Co., Ltd.</h3>
-      <div class="meta">Nov 2025 – Mar 2026 · System Management Service · Thailand</div>
+    <div class="row">
+      <h3>Cloud Engineer Intern, A-HOST Co., Ltd.</h3>
+      <div class="meta">Nov 2025 – Mar 2026 · System Management Service</div>
       <ul>
         <li>Automated the daily health check of 11 client production servers (Linux, IBM AIX): 1–2 hours down to ~5 minutes.</li>
         <li>n8n workflows over SSH through SSL VPN collect disk, CPU/memory, tablespace, AIX error logs, process and backup status.</li>
-        <li>Parsers turn messy command output into JSON, stored as dated logs and in PostgreSQL for trends and monthly reports.</li>
-        <li>Custom TypeScript n8n node (ssh2) for non-interactive AIX <code>topas</code> capture.</li>
+        <li>Parsers turn inconsistent command output into JSON, stored as dated logs and in PostgreSQL for trends and monthly reports.</li>
+        <li>Custom TypeScript n8n node (ssh2) to capture non-interactive AIX <code>topas</code> output.</li>
         <li>Docker Compose behind an Nginx reverse proxy; GitHub Actions on a self-hosted runner redeploys on every push.</li>
       </ul>
-      <div class="tags"><span>n8n</span><span>SSH</span><span>Docker</span><span>Nginx</span><span>GitHub Actions</span><span>PostgreSQL</span><span>React</span></div>
     </div>
   </section>
-  <section id="projects">
+  <section>
     <h2>Projects</h2>
-    <div class="card">
-      <h3>Smart Bed Sensor — IoT patient monitoring</h3>
-      <div class="meta">Senior project · team of 7 · Burapha University · my part: data pipeline &amp; alerting</div>
+    <div class="row">
+      <h3>Smart Bed Sensor, IoT patient monitoring</h3>
+      <div class="meta">Senior project · team of 7 · my part: data pipeline, alerting, LSTM model</div>
       <ul>
-        <li>MQTT ingestion from Raspberry Pi gateways (per-sensor topics, auto-resubscribe), live updates over Socket.IO.</li>
+        <li>MQTT ingestion from Raspberry Pi gateways with per-sensor topics and auto-resubscribe; live updates over Socket.IO.</li>
         <li>Alerting service with per-patient thresholds and history on NestJS + MySQL.</li>
-        <li>Trained an LSTM posture / bed-exit classifier: 99% accuracy (F1 0.99) vs 79% for a plain NN.</li>
+        <li>Trained an LSTM posture and bed-exit classifier: 99% accuracy (F1 0.99) vs 79% for a plain neural network.</li>
       </ul>
-      <div class="tags"><span>MQTT</span><span>NestJS</span><span>MySQL</span><span>Socket.IO</span><span>Keras</span></div>
-      <div class="meta"><a href="https://github.com/5kez/backend_bedproject">backend</a> · <a href="https://github.com/5kez/frontend_bedproject">frontend</a> · team credit in README</div>
+      <div class="meta"><a href="https://github.com/5kez/backend_bedproject">backend</a> · <a href="https://github.com/5kez/frontend_bedproject">frontend</a> · team credit in each README</div>
     </div>
-    <div class="card">
+    <div class="row">
       <h3>Server Health-Check Automation</h3>
       <div class="meta">In progress · Terraform · Ansible · Prometheus / Grafana · GitHub Actions on AWS</div>
-      <p>An open rebuild of my internship system using standard DevOps tooling.</p>
+      <p style="margin:0">An open rebuild of my internship system with standard DevOps tooling.</p>
     </div>
-    <div class="card">
+    <div class="row">
       <h3>mumu-auto-farm</h3>
       <div class="meta">Personal · Python · <a href="https://github.com/5kez/mumu-auto-farm">github</a></div>
-      <p>Automation bot that scripts repetitive emulator workflows end to end.</p>
+      <p style="margin:0">Automation bot that scripts repetitive emulator workflows end to end.</p>
     </div>
   </section>
-  <section id="skills">
+  <section id="docs">
+    <h2>Documents</h2>
+    <div class="docs">
+      <div class="doc"><h3>Résumé</h3><div class="meta">1 page · A4 · English</div><a class="btn" href="resume.pdf">download pdf</a></div>
+      <div class="doc"><h3>Smart Bed Sensor, senior project report</h3><div class="meta">Thai · 332 pages · 17.6 MB · team of 7</div><a class="btn" href="docs/smart-bed-senior-project-report.pdf">download pdf</a></div>
+      <div class="doc" id="coopdoc"><h3>Automate Daily Monitoring, internship report</h3><div class="meta">Thai · 116 pages · 5.9 MB</div><span class="btn">available on request</span></div>
+    </div>
+  </section>
+  <section>
     <h2>Skills</h2>
     <div class="skills">
       <div><b>Cloud &amp; DevOps</b><p>Docker, Docker Compose, Nginx, GitHub Actions, Linux, IBM AIX, SSH, VPN</p></div>
@@ -143,50 +174,100 @@ footer{font:.78rem var(--mono);color:var(--muted)}
     <div class="contact"><span>tham.kaeoket@gmail.com</span><a href="https://github.com/5kez">github.com/5kez</a><a href="resume.pdf">resume.pdf</a></div>
   </section>
 </main>
-<footer>B.Sc. Computer Science, Burapha University (2026) · Chanthaburi, Thailand</footer>
-</div>
-<script>
-const P = {
-  automonitor: {t:"Automate Daily Monitoring (internship)", b:[
-    "problem   1–2 h of manual SSH checks every morning, copied into Excel",
-    "solution  n8n workflows over SSH + VPN → parse output → JSON → PostgreSQL → React dashboard",
-    "scale     11 production servers, Linux and IBM AIX",
-    "result    ~5 minutes per morning, no manual data entry",
-    "infra     Docker Compose · Nginx reverse proxy · GitHub Actions (self-hosted runner)"]},
-  smartbed: {t:"Smart Bed Sensor (senior project, team of 7)", b:[
-    "my part   MQTT pipeline, Socket.IO gateways, alerting service, LSTM model",
-    "model     LSTM 99% accuracy (F1 0.99) · NN 79% · SVM 25%",
-    "stack     NestJS · MySQL · MQTT · Raspberry Pi · Keras",
-    "code      github.com/5kez/backend_bedproject"]},
-  healthcheck: {t:"Server Health-Check Automation (in progress)", b:[
-    "plan      Terraform → EC2 targets · Ansible → collectors · Prometheus/Grafana → alerts",
-    "ci        lint + terraform plan on every push"]},
-  "mumu-auto-farm": {t:"mumu-auto-farm (personal)", b:["python    automation bot for repetitive emulator workflows","code      github.com/5kez/mumu-auto-farm"]}
-};
-const out=document.getElementById("out"), cmd=document.getElementById("cmd");
-const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-function print(html,cls){const d=document.createElement("div");if(cls)d.className=cls;d.innerHTML=html;out.append(d);out.scrollTop=out.scrollHeight}
-const C={
-  help:()=>print(["available commands:","  whoami          who I am","  ls projects     list projects","  cat &lt;project&gt;   project details","  skills          tools I use","  resume          download my résumé","  contact         how to reach me","  read            switch to read mode","  clear           clear the screen"].join("\n")),
-  whoami:()=>print("Tham Kaeoket — Junior DevOps / Cloud Engineer, Thailand.\nCS @ Burapha University (2026). I like scripts that delete boring work."),
-  ls:a=>{ if(a[0]==="projects"||!a.length) print(Object.keys(P).map(k=>`<span class="ok">${k}/</span>`).join("  ")); else print(`ls: ${esc(a[0])}: no such directory`,"dim")},
-  cat:a=>{const p=P[(a[0]||"").replace(/\/$/,"")]; if(!p) return print(`cat: ${esc(a[0]||"")}: try <span class="p">ls projects</span>`,"dim"); print(`<span class="p"># ${p.t}</span>\n`+p.b.map(esc).join("\n"))},
-  skills:()=>print("cloud/devops   docker  compose  nginx  github-actions  linux  aix  ssh\nscripting      bash  python  typescript  n8n\ndata           postgresql  mysql  mqtt  websockets\nlearning       aws  terraform  ansible  prometheus  grafana"),
-  resume:()=>print('<a href="resume.pdf">resume.pdf</a> (1 page, A4)'),
-  contact:()=>print('email   tham.kaeoket@gmail.com\ngithub  <a href="https://github.com/5kez">github.com/5kez</a>'),
-  read:()=>setView("read"),
-  clear:()=>{out.innerHTML=""},
-  sudo:()=>print("nice try. this incident will be reported.","dim")
-};
-function run(line){const raw=line.trim(); print(`<span class="p">tham@skez:~$</span> ${esc(raw)}`); if(!raw) return; const [c,...a]=raw.split(/\s+/); (C[c.toLowerCase()]||(()=>print(`${esc(c)}: command not found. type <span class="p">help</span>`,"dim")))(a)}
-document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();run(cmd.value);cmd.value=""});
-const chips=document.getElementById("chips");
-["whoami","ls projects","cat automonitor","cat smartbed","skills","resume"].forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c;b.onclick=()=>run(c);chips.append(b)});
-function setView(v){const t=v!=="read";document.getElementById("termview").hidden=!t;document.getElementById("readview").hidden=t;
-  document.getElementById("v-term").setAttribute("aria-pressed",t);document.getElementById("v-read").setAttribute("aria-pressed",!t);try{localStorage.setItem("view",v)}catch(e){}}
-document.getElementById("v-term").onclick=()=>setView("term");document.getElementById("v-read").onclick=()=>setView("read");
-let v="term";try{v=localStorage.getItem("view")||"term"}catch(e){} setView(v);
-print('Welcome. Type <span class="p">help</span>, or tap a command below.',"dim"); run("whoami"); run("ls projects");
+<footer class="gut">B.Sc. Computer Science, Burapha University (2026) · Chanthaburi, Thailand</footer>
+
+<script type="module">
+const N = [
+ {id:"tham",label:"tham",sub:"core",pos:[0,0,0],shape:"core",k:"About",t:"Tham Kaeoket",m:"Chanthaburi, Thailand · B.Sc. CS, Burapha University (2026)",
+  body:"<p>Junior DevOps / Cloud Engineer. I like scripts that delete boring work, and I am learning AWS, Terraform and Ansible by rebuilding my internship system with them.</p>",tags:["linux","docker","ci/cd","automation"]},
+ {id:"automonitor",label:"automonitor",sub:"internship",pos:[3.2,0.9,-0.6],shape:"rack",k:"Internship · A-HOST",t:"Automate Daily Monitoring",m:"Nov 2025 – Mar 2026 · sole developer",
+  metrics:[["1–2 h → 5 min","morning check"],["11","production servers"]],
+  body:"<ul><li>n8n workflows over SSH + SSL VPN to Linux and AIX servers</li><li>Parsers turn raw output into JSON, stored in PostgreSQL</li><li>React dashboard with alert thresholds and PDF reports</li><li>Docker Compose, Nginx, GitHub Actions self-hosted runner</li></ul>",tags:["n8n","ssh","docker","nginx","github actions","postgresql"]},
+ {id:"smartbed",label:"smartbed",sub:"senior project",pos:[-3,1.1,0.8],shape:"sensor",k:"Senior project · team of 7",t:"Smart Bed Sensor",m:"my part: data pipeline, alerting, LSTM",
+  metrics:[["99%","LSTM accuracy"],["5","posture classes"]],
+  body:"<ul><li>MQTT ingestion from Raspberry Pi gateways, live Socket.IO updates</li><li>Alerting service on NestJS + MySQL</li><li>LSTM beat NN (79%) and SVM (25%)</li></ul><p class='meta'><a href='docs/smart-bed-senior-project-report.pdf'>report (pdf)</a> · <a href='https://github.com/5kez/backend_bedproject'>code</a></p>",tags:["mqtt","nestjs","mysql","keras"]},
+ {id:"healthcheck",label:"healthcheck",sub:"in progress",pos:[0.6,-1.9,2.6],shape:"wire",k:"Building now",t:"Server Health-Check Automation",m:"Terraform · Ansible · Prometheus/Grafana · AWS",
+  body:"<p>An open rebuild of my internship system: Terraform creates the servers, Ansible installs collectors, Prometheus and Grafana alert, GitHub Actions runs plan and lint.</p>",tags:["terraform","ansible","prometheus","aws"]},
+ {id:"mumu",label:"mumu-auto-farm",sub:"python",pos:[-1.2,-1.6,-2.8],shape:"cube",k:"Personal",t:"mumu-auto-farm",m:"Python",
+  body:"<p>Automation bot for repetitive emulator workflows. <a href='https://github.com/5kez/mumu-auto-farm'>github</a></p>",tags:["python","automation"]},
+ {id:"docs",label:"documents",sub:"pdf",pos:[2.4,-0.6,-3.1],shape:"doc",k:"Downloads",t:"Documents",m:"résumé and project reports",
+  body:"<ul><li><a href='resume.pdf'>Résumé, 1 page</a></li><li><a href='docs/smart-bed-senior-project-report.pdf'>Smart Bed senior project report (17.6 MB)</a></li><li>Internship report: available on request</li></ul>",tags:["pdf"]}
+];
+const E=[["tham","automonitor"],["tham","smartbed"],["tham","healthcheck"],["tham","mumu"],["tham","docs"],["automonitor","healthcheck"],["smartbed","automonitor"]];
+
+const panel=document.getElementById("panel"),pbody=document.getElementById("pbody");
+function openPanel(n){pbody.innerHTML=`<div class="k">${n.k}</div><h2>${n.t}</h2><div class="meta">${n.m}</div>`+(n.metrics?`<div class="metrics">${n.metrics.map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("")}</div>`:"")+n.body+`<div class="tags">${n.tags.map(t=>`<span>${t}</span>`).join("")}</div>`;panel.classList.add("open");document.querySelectorAll(".lbl").forEach(l=>l.classList.toggle("on",l.dataset.id===n.id));window.__focus&&window.__focus(n)}
+document.getElementById("pclose").onclick=()=>{panel.classList.remove("open");document.querySelectorAll(".lbl").forEach(l=>l.classList.remove("on"));window.__focus&&window.__focus(null)};
+
+/* terminal */
+const out=document.getElementById("out"),cmd=document.getElementById("cmd"),term=document.getElementById("term"),tbtn=document.getElementById("tbtn");
+const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const pr=(h,c)=>{const d=document.createElement("div");if(c)d.className=c;d.innerHTML=h;out.append(d);out.scrollTop=out.scrollHeight};
+const byId=Object.fromEntries(N.map(n=>[n.id,n]));
+const C={help:()=>pr("whoami · ls · open &lt;node&gt; · resume · contact · clear"),
+ whoami:()=>pr("Tham Kaeoket, Junior DevOps / Cloud Engineer, Chanthaburi TH"),
+ ls:()=>pr(N.filter(n=>n.id!=="tham").map(n=>`<span class="ok">${n.id}/</span>`).join("  ")),
+ open:a=>{const n=byId[a[0]]||byId[(a[0]||"").replace(/\/$/,"")];n?openPanel(n):pr(`open: ${esc(a[0]||"")}: try ls`,"dim")},
+ cat:a=>C.open(a),resume:()=>pr('<a href="resume.pdf">resume.pdf</a>'),
+ contact:()=>pr("tham.kaeoket@gmail.com · github.com/5kez"),clear:()=>{out.innerHTML=""},
+ sudo:()=>pr("nice try. this incident will be reported.","dim")};
+document.getElementById("tform").addEventListener("submit",e=>{e.preventDefault();const r=cmd.value.trim();cmd.value="";pr(`<span class="p">$</span> ${esc(r)}`);if(!r)return;const[c,...a]=r.split(/\s+/);(C[c.toLowerCase()]||(()=>pr(`${esc(c)}: command not found`,"dim")))(a)});
+tbtn.onclick=()=>{const o=term.classList.toggle("open");tbtn.setAttribute("aria-expanded",o);if(o){if(!out.childElementCount){pr("type help, or try: open automonitor","dim")}cmd.focus()}};
+
+/* 3D */
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function hasGL(){try{const c=document.createElement("canvas");return !!(c.getContext("webgl2")||c.getContext("webgl"))}catch(e){return false}}
+if(!hasGL()){document.documentElement.classList.add("nogl")} else {
+ try{
+ const THREE=await import("three");const {OrbitControls}=await import("three/addons/controls/OrbitControls.js");
+ const canvas=document.getElementById("gl"),hero=document.getElementById("hero"),labels=document.getElementById("labels");
+ const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+ const scene=new THREE.Scene();scene.fog=new THREE.Fog(0x0c0f15,9,22);
+ const cam=new THREE.PerspectiveCamera(45,1,0.1,100);cam.position.set(0,1.6,10.5);
+ const ctl=new OrbitControls(cam,canvas);ctl.enableDamping=true;ctl.enablePan=false;ctl.minDistance=5;ctl.maxDistance=22;ctl.autoRotate=!reduce;ctl.autoRotateSpeed=0.45;ctl.enableZoom=false;
+ scene.add(new THREE.AmbientLight(0x8899bb,0.6));const dl=new THREE.DirectionalLight(0xffe2b8,1.1);dl.position.set(4,6,5);scene.add(dl);
+ const AMBER=0xf0a443,ICE=0x8fb8ff;
+ const grid=new THREE.GridHelper(30,30,0x1e2636,0x161c28);grid.position.y=-3.2;scene.add(grid);
+ const meshes={},pick=[];
+ const mat=(c,e=0.25)=>new THREE.MeshStandardMaterial({color:0x1a2130,emissive:c,emissiveIntensity:e,metalness:.4,roughness:.45,flatShading:true});
+ function build(n){const g=new THREE.Group();
+  if(n.shape==="core"){const m=new THREE.Mesh(new THREE.IcosahedronGeometry(0.9,1),mat(AMBER,.55));g.add(m);g.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.15,1)),new THREE.LineBasicMaterial({color:AMBER,transparent:true,opacity:.35})))}
+  else if(n.shape==="rack"){for(let i=0;i<4;i++){const b=new THREE.Mesh(new THREE.BoxGeometry(1.1,.22,.7),mat(i%2?ICE:AMBER,.18));b.position.y=i*.28-.42;g.add(b);const led=new THREE.Mesh(new THREE.BoxGeometry(.06,.06,.02),new THREE.MeshBasicMaterial({color:i===3?AMBER:0x6fcf8f}));led.position.set(.42,i*.28-.42,.36);g.add(led)}}
+  else if(n.shape==="sensor"){g.add(new THREE.Mesh(new THREE.TorusGeometry(.6,.16,10,28),mat(ICE,.35)));g.add(new THREE.Mesh(new THREE.SphereGeometry(.22,16,12),mat(AMBER,.6)))}
+  else if(n.shape==="wire"){g.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1,1,1,2,2,2)),new THREE.LineDashedMaterial({color:ICE,dashSize:.08,gapSize:.06})));g.children[0].computeLineDistances()}
+  else if(n.shape==="cube"){g.add(new THREE.Mesh(new THREE.BoxGeometry(.7,.7,.7),mat(ICE,.3)))}
+  else if(n.shape==="doc"){for(let i=0;i<3;i++){const p=new THREE.Mesh(new THREE.BoxGeometry(.62,.82,.03),mat(i===2?AMBER:ICE,.22));p.position.set(i*.08,i*.06,i*.12);p.rotation.z=-.08*i;g.add(p)}}
+  const hit=new THREE.Mesh(new THREE.SphereGeometry(1,8,6),new THREE.MeshBasicMaterial({visible:false}));hit.userData.n=n;g.add(hit);pick.push(hit);
+  g.position.set(...n.pos);g.userData.base=n.pos[1];scene.add(g);meshes[n.id]=g;
+  const l=document.createElement("button");l.className="lbl";l.type="button";l.dataset.id=n.id;l.innerHTML=`${n.label}<small>${n.sub}</small>`;l.onclick=()=>openPanel(n);labels.append(l);n.el=l}
+ N.forEach(build);
+ /* edges + packets */
+ const packets=[];
+ E.forEach(([a,b],i)=>{const A=new THREE.Vector3(...byId[a].pos),B=new THREE.Vector3(...byId[b].pos);const mid=A.clone().add(B).multiplyScalar(.5);mid.y+=.9;
+  const curve=new THREE.QuadraticBezierCurve3(A,mid,B);scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(40)),new THREE.LineBasicMaterial({color:0x31405c,transparent:true,opacity:.9})));
+  for(let k=0;k<2;k++){const p=new THREE.Mesh(new THREE.SphereGeometry(.045,8,6),new THREE.MeshBasicMaterial({color:k?ICE:AMBER}));scene.add(p);packets.push({p,curve,t:(i*.17+k*.5)%1,s:.0025+((i+k)%3)*.0009})}});
+ /* starfield */
+ const sg=new THREE.BufferGeometry(),sp=[];for(let i=0;i<600;i++){sp.push((Math.random()-.5)*40,(Math.random()-.3)*20,(Math.random()-.5)*40)}sg.setAttribute("position",new THREE.Float32BufferAttribute(sp,3));
+ scene.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0x5a6886,size:.04})));
+ /* picking */
+ const ray=new THREE.Raycaster(),ptr=new THREE.Vector2();let down=null;
+ canvas.addEventListener("pointerdown",e=>{down=[e.clientX,e.clientY]});
+ canvas.addEventListener("pointerup",e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>6)return;const r=canvas.getBoundingClientRect();ptr.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(ptr,cam);const h=ray.intersectObjects(pick)[0];if(h)openPanel(h.object.userData.n)});
+ /* focus tween */
+ let goal=null;const home=new THREE.Vector3(0,0,0);
+ window.__focus=n=>{goal=n?new THREE.Vector3(...n.pos):home.clone();ctl.autoRotate=!n&&!reduce};
+ function size(){const w=hero.clientWidth,h=hero.clientHeight,m=w<760;renderer.setSize(w,h,false);cam.aspect=w/h;cam.position.z=m?20.5:11;scene.fog.far=m?32:22;if(m)cam.setViewOffset(w,h,0,h*.2,w,h);else cam.setViewOffset(w,h,-w*.17,0,w,h);cam.updateProjectionMatrix()}
+ addEventListener("resize",size);size();
+ const v=new THREE.Vector3();let visible=true;new IntersectionObserver(([en])=>{visible=en.isIntersecting}).observe(hero);
+ const clock=new THREE.Clock();
+ (function loop(){requestAnimationFrame(loop);if(!visible)return;const t=clock.getElapsedTime();
+  if(goal){ctl.target.lerp(goal,.06);if(ctl.target.distanceTo(goal)<.01)goal=null}
+  for(const n of N){const g=meshes[n.id];if(!reduce){g.position.y=g.userData.base+Math.sin(t*.8+n.pos[0])*.12;g.rotation.y+=n.shape==="core"?.004:.006}
+   v.copy(g.position);v.y+=.9;v.project(cam);const x=(v.x*.5+.5)*hero.clientWidth,y=(-v.y*.5+.5)*hero.clientHeight;n.el.style.left=x+"px";n.el.style.top=y+"px";n.el.style.opacity=v.z<1?1:0}
+  if(!reduce)for(const k of packets){k.t=(k.t+k.s)%1;k.p.position.copy(k.curve.getPoint(k.t))}
+  ctl.update();renderer.render(scene,cam)})();
+ }catch(err){console.error(err);document.documentElement.classList.add("nogl")}
+}
 </script>
 </body>
 </html>
