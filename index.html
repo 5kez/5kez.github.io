@@ -14,7 +14,7 @@
 :root{
   --bg:#f3f1ea; --panel:#fbfaf6; --ink:#20232a; --muted:#5f6470; --line:#d9d5c8;
   --amber:#a8590a; --amber-soft:#f1e3cf; --ok:#2f7a4a;
-  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace; --sans:"IBM Plex Sans","IBM Plex Sans Thai",system-ui,sans-serif;
+  --mono:"JetBrains Mono","IBM Plex Sans Thai",ui-monospace,Consolas,monospace; --sans:"IBM Plex Sans","IBM Plex Sans Thai",system-ui,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161b;--panel:#1b1e25;--ink:#e8e4da;--muted:#9a9fab;--line:#2c3039;--amber:#f0a443;--amber-soft:#3a2c18;--ok:#6fcf8f;color-scheme:dark}}
@@ -25,6 +25,9 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font
 html[data-lang="th"] body{line-height:1.7}
 html[data-lang="th"] .en,html:not([data-lang="th"]) .th{display:none!important}
 a{color:var(--amber)}
+p,li,.meta,.card h3,.doc h3{text-wrap:pretty}
+.nw{display:inline-block;max-width:100%}
+html[data-lang="th"] p,html[data-lang="th"] li{line-break:strict;word-break:normal}
 :focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 .wrap{max-width:880px;margin:0 auto;padding-block:24px 120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:44px}
 header{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
@@ -116,7 +119,7 @@ footer{font:.78rem var(--mono);color:var(--muted)}
 <div class="intro">
   <h1 class="rise d1"><span class="en">Tham Kaeoket</span><span class="th">ธาม แก้วเกษ</span><span class="role">Junior DevOps / Cloud Engineer</span></h1>
   <p class="rise d2 en">I write the scripts and pipelines that make repetitive operations work disappear. At my internship I automated the morning health check of 11 production servers, cutting it from <span class="stat">1–2 h</span> to <span class="stat">~5 min</span>.</p>
-  <p class="rise d2 th">ผมเขียน script และ pipeline ที่ทำให้งานดูแลระบบแบบซ้ำ ๆ หายไป ตอนฝึกงานผมทำระบบตรวจเซิร์ฟเวอร์ Production 11 เครื่องแบบอัตโนมัติ ลดเวลาจาก <span class="stat">1–2 ชม.</span> เหลือ <span class="stat">~5 นาที</span></p>
+  <p class="rise d2 th">ผมเขียน script และ pipeline ที่ทำให้งานดูแลระบบแบบซ้ำ ๆ หายไป ตอน<span class="nw">ฝึกงาน</span>ผมทำระบบตรวจ<span class="nw">เซิร์ฟเวอร์</span> Production 11 เครื่องแบบ<span class="nw">อัตโนมัติ</span> ลดเวลาจาก <span class="stat">1–2 ชม.</span> เหลือ <span class="stat">~5 นาที</span></p>
   <div class="cta rise d3">
     <a class="btn primary" href="tel:+66624739152"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span class="en">Call 062-473-9152</span><span class="th">โทร 062-473-9152</span></a>
     <a class="btn ghost gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=tham.kaeoket@gmail.com&amp;su=Job%20opportunity" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><span class="en">Email via Gmail</span><span class="th">ส่งอีเมล (Gmail)</span></a>
@@ -136,19 +139,19 @@ footer{font:.78rem var(--mono);color:var(--muted)}
     <h2><span class="en">Experience</span><span class="th">ประสบการณ์ทำงาน</span></h2>
     <div class="card">
       <h3><span class="en">Cloud Engineer Intern, A-HOST Co., Ltd.</span><span class="th">Cloud Engineer (นักศึกษาสหกิจศึกษา) บริษัท เอ-โฮสต์ จำกัด</span></h3>
-      <div class="meta"><span class="en">Nov 2025 – Mar 2026 · System Management Service</span><span class="th">พ.ย. 2568 – มี.ค. 2569 · แผนก System Management Service</span></div>
-      <div class="metrics"><div><b>1–2 h → 5 min</b><span class="en">morning check</span><span class="th">ตรวจช่วงเช้า</span></div><div><b>11</b><span class="en">production servers</span><span class="th">เซิร์ฟเวอร์</span></div></div>
+      <div class="meta"><span class="en"><span class="nw">Nov 2025 – Mar 2026</span> · <span class="nw">System Management Service</span></span><span class="th"><span class="nw">พ.ย. 2568 – มี.ค. 2569</span> · <span class="nw">แผนก System Management Service</span></span></div>
+      <div class="metrics"><div><b>1–2 h → 5 min</b><span class="en">morning check</span><span class="th"><span class="nw">ตรวจช่วงเช้า</span></span></div><div><b>11</b><span class="en">production servers</span><span class="th"><span class="nw">เซิร์ฟเวอร์</span></span></div></div>
       <ul class="en">
         <li>n8n workflows over SSH through SSL VPN collect disk, CPU/memory, tablespace, AIX error logs, process and backup status.</li>
         <li>Parsers turn inconsistent command output into JSON, stored as dated logs and in PostgreSQL for trends and monthly reports.</li>
-        <li>Custom TypeScript n8n node (ssh2) to capture non-interactive AIX <code>topas</code> output.</li>
-        <li>Docker Compose behind an Nginx reverse proxy; GitHub Actions on a self-hosted runner redeploys on every push.</li>
+        <li>Custom TypeScript n8n node (ssh2) to capture non‑interactive AIX <code>topas</code> output.</li>
+        <li>Docker Compose behind an Nginx reverse proxy; GitHub Actions on a self‑hosted runner redeploys on every push.</li>
       </ul>
       <ul class="th">
         <li>workflow ด้วย n8n เชื่อมต่อผ่าน SSH และ SSL VPN เก็บข้อมูล disk, CPU/memory, tablespace, AIX error log, process และ backup</li>
-        <li>parser แปลงผลลัพธ์คำสั่งที่รูปแบบไม่แน่นอนเป็น JSON เก็บเป็น log ตามวันที่และใน PostgreSQL เพื่อดูแนวโน้มและทำรายงานรายเดือน</li>
+        <li>parser แปลงผลลัพธ์คำสั่งที่รูปแบบไม่แน่นอนเป็น JSON เก็บเป็น log ตามวันที่และใน PostgreSQL เพื่อดูแนวโน้มและทำรายงาน<span class="nw">รายเดือน</span></li>
         <li>custom node ของ n8n ด้วย TypeScript (ssh2) สำหรับดึงผล <code>topas</code> ของ AIX</li>
-        <li>Docker Compose หลัง Nginx reverse proxy และ GitHub Actions บน self-hosted runner ที่ deploy ใหม่ทุกครั้งที่ push</li>
+        <li>Docker Compose หลัง Nginx reverse proxy และ GitHub Actions บน self‑hosted runner ที่ deploy ใหม่ทุกครั้งที่ push</li>
       </ul>
       <div class="tags"><span>n8n</span><span>SSH</span><span>Docker</span><span>Nginx</span><span>GitHub Actions</span><span>PostgreSQL</span><span>React</span></div>
     </div>
@@ -158,17 +161,17 @@ footer{font:.78rem var(--mono);color:var(--muted)}
     <h2><span class="en">Projects</span><span class="th">โครงงาน</span></h2>
     <div class="card">
       <h3><span class="en">Smart Bed Sensor, IoT patient monitoring</span><span class="th">Smart Bed Sensor ระบบติดตามผู้ป่วยผ่านเซนเซอร์ IoT</span></h3>
-      <div class="meta"><span class="en">Senior project · team of 7 · my part: data pipeline, alerting, LSTM model</span><span class="th">โครงงานจบ · ทีม 7 คน · ส่วนที่ผมทำ: data pipeline, ระบบแจ้งเตือน, โมเดล LSTM</span></div>
-      <div class="metrics"><div><b>99%</b><span class="en">LSTM accuracy</span><span class="th">ความแม่นยำ LSTM</span></div><div><b>5</b><span class="en">posture classes</span><span class="th">คลาสท่านอน</span></div></div>
+      <div class="meta"><span class="en"><span class="nw">Senior project</span> · <span class="nw">team of 7</span> · <span class="nw">my part: data pipeline, alerting, LSTM model</span></span><span class="th">โครงงานจบ · ทีม 7 คน · ส่วนที่ผมทำ: data pipeline, ระบบ<span class="nw">แจ้งเตือน</span>, โมเดล LSTM</span></div>
+      <div class="metrics"><div><b>99%</b><span class="en">LSTM accuracy</span><span class="th"><span class="nw">ความแม่นยำ</span> LSTM</span></div><div><b>5</b><span class="en">posture classes</span><span class="th"><span class="nw">คลาสท่านอน</span></span></div></div>
       <ul class="en">
-        <li>MQTT ingestion from Raspberry Pi gateways with per-sensor topics and auto-resubscribe; live updates over Socket.IO.</li>
-        <li>Alerting service with per-patient thresholds and history on NestJS + MySQL.</li>
-        <li>Trained an LSTM posture and bed-exit classifier: 99% accuracy (F1 0.99) vs 79% for a plain neural network.</li>
+        <li>MQTT ingestion from Raspberry Pi gateways with per‑sensor topics and auto‑resubscribe; live updates over Socket.IO.</li>
+        <li>Alerting service with per‑patient thresholds and history on NestJS + MySQL.</li>
+        <li>Trained an LSTM posture and bed‑exit classifier: 99% accuracy (F1&nbsp;0.99) vs 79% for a plain neural network.</li>
       </ul>
       <ul class="th">
-        <li>รับข้อมูลผ่าน MQTT จาก Raspberry Pi gateway แยก topic ตามเซนเซอร์ เชื่อมต่อใหม่อัตโนมัติ และส่งขึ้นหน้าจอแบบเรียลไทม์ด้วย Socket.IO</li>
-        <li>ระบบแจ้งเตือนตามเกณฑ์รายผู้ป่วยพร้อมประวัติ บน NestJS + MySQL</li>
-        <li>เทรนโมเดล LSTM จำแนกท่านอนและการลุกจากเตียง ได้ความแม่นยำ 99% (F1 0.99) เทียบกับ neural network ธรรมดา 79%</li>
+        <li>รับข้อมูลผ่าน MQTT จาก Raspberry Pi gateway แยก topic ตามเซนเซอร์ เชื่อมต่อใหม่<span class="nw">อัตโนมัติ</span> และส่งขึ้นหน้าจอแบบ<span class="nw">เรียลไทม์</span>ด้วย Socket.IO</li>
+        <li>ระบบ<span class="nw">แจ้งเตือน</span>ตามเกณฑ์รายผู้ป่วยพร้อม<span class="nw">ประวัติ</span> บน NestJS + MySQL</li>
+        <li>เทรนโมเดล LSTM จำแนกท่านอนและ<span class="nw">การลุกจากเตียง</span> ได้<span class="nw">ความแม่นยำ</span> 99% (F1&nbsp;0.99) เทียบกับ neural network <span class="nw">ธรรมดา</span> 79%</li>
       </ul>
       <div class="meta"><a href="https://github.com/5kez/backend_bedproject">backend</a> · <a href="https://github.com/5kez/frontend_bedproject">frontend</a> · <span class="en">team credit in each README</span><span class="th">ระบุเครดิตทีมไว้ใน README</span></div>
     </div>
@@ -176,23 +179,23 @@ footer{font:.78rem var(--mono);color:var(--muted)}
       <h3>Server Health-Check Automation</h3>
       <div class="meta"><span class="en">In progress</span><span class="th">กำลังทำ</span> · Terraform · Ansible · Prometheus / Grafana · GitHub Actions · AWS</div>
       <p style="margin:0" class="en">An open rebuild of my internship system with standard DevOps tooling.</p>
-      <p style="margin:0" class="th">สร้างระบบแบบที่ทำตอนฝึกงานขึ้นใหม่ด้วยเครื่องมือมาตรฐานของสาย DevOps</p>
+      <p style="margin:0" class="th">สร้างระบบแบบที่ทำตอน<span class="nw">ฝึกงาน</span>ขึ้นใหม่ด้วย<span class="nw">เครื่องมือมาตรฐาน</span>ของสาย DevOps</p>
     </div>
     <div class="card">
       <h3>mumu-auto-farm</h3>
-      <div class="meta"><span class="en">Personal</span><span class="th">โปรเจกต์ส่วนตัว</span> · Python · <a href="https://github.com/5kez/mumu-auto-farm">github</a></div>
+      <div class="meta"><span class="en">Personal</span><span class="th"><span class="nw">โปรเจกต์ส่วนตัว</span></span> · Python · <a href="https://github.com/5kez/mumu-auto-farm">github</a></div>
       <p style="margin:0" class="en">Automation bot that scripts repetitive emulator workflows end to end.</p>
-      <p style="margin:0" class="th">bot อัตโนมัติสำหรับงานซ้ำ ๆ บน emulator</p>
+      <p style="margin:0" class="th">bot <span class="nw">อัตโนมัติ</span>สำหรับงานซ้ำ ๆ บน emulator</p>
     </div>
   </section>
 
   <section id="docs">
     <h2><span class="en">Documents</span><span class="th">เอกสาร</span></h2>
     <div class="docs">
-      <div class="doc"><h3>Résumé (English)</h3><div class="meta">1 page · A4</div><a class="dl" href="resume.pdf">download pdf ↓</a></div>
-      <div class="doc"><h3>เรซูเม่ (ภาษาไทย)</h3><div class="meta">1 หน้า · A4</div><a class="dl" href="resume-th.pdf"><span class="en">download pdf ↓</span><span class="th">ดาวน์โหลด pdf ↓</span></a></div>
-      <div class="doc"><h3><span class="en">Smart Bed Sensor senior project report</span><span class="th">เล่มโครงงานจบ Smart Bed Sensor</span></h3><div class="meta"><span class="en">Thai · 332 pages · 17.6 MB · team of 7</span><span class="th">ภาษาไทย · 332 หน้า · 17.6 MB · ทีม 7 คน</span></div><a class="dl" href="docs/smart-bed-senior-project-report.pdf"><span class="en">download pdf ↓</span><span class="th">ดาวน์โหลด pdf ↓</span></a></div>
-      <div class="doc"><h3><span class="en">Internship report</span><span class="th">เล่มรายงานสหกิจศึกษา</span></h3><div class="meta"><span class="en">Automate Daily Monitoring · Thai · 116 pages · 5.9 MB</span><span class="th">Automate Daily Monitoring · ภาษาไทย · 116 หน้า · 5.9 MB</span></div><a class="dl" href="docs/internship-report-automate-monitoring.pdf"><span class="en">download pdf ↓</span><span class="th">ดาวน์โหลด pdf ↓</span></a></div>
+      <div class="doc"><h3>Résumé (English)</h3><div class="meta"><span class="nw">1 page</span> · <span class="nw">A4</span></div><a class="dl" href="resume.pdf">download pdf ↓</a></div>
+      <div class="doc"><h3>เรซูเม่ (<span class="nw">ภาษาไทย</span>)</h3><div class="meta"><span class="nw">1 หน้า</span> · <span class="nw">A4</span></div><a class="dl" href="resume-th.pdf"><span class="en">download pdf ↓</span><span class="th"><span class="nw">ดาวน์โหลด</span> pdf ↓</span></a></div>
+      <div class="doc"><h3><span class="en">Smart Bed Sensor senior project report</span><span class="th">เล่มโครงงานจบ Smart Bed Sensor</span></h3><div class="meta"><span class="en"><span class="nw">Thai</span> · <span class="nw">332 pages</span> · <span class="nw">17.6 MB</span> · <span class="nw">team of 7</span></span><span class="th"><span class="nw">ภาษาไทย</span> · 332 หน้า · 17.6 MB · ทีม 7 คน</span></div><a class="dl" href="docs/smart-bed-senior-project-report.pdf"><span class="en">download pdf ↓</span><span class="th"><span class="nw">ดาวน์โหลด</span> pdf ↓</span></a></div>
+      <div class="doc"><h3><span class="en">Internship report</span><span class="th">เล่มรายงานสหกิจศึกษา</span></h3><div class="meta"><span class="en"><span class="nw">Automate Daily Monitoring</span> · <span class="nw">Thai</span> · <span class="nw">116 pages</span> · <span class="nw">5.9 MB</span></span><span class="th">Automate Daily Monitoring · <span class="nw">ภาษาไทย</span> · 116 หน้า · 5.9 MB</span></div><a class="dl" href="docs/internship-report-automate-monitoring.pdf"><span class="en">download pdf ↓</span><span class="th"><span class="nw">ดาวน์โหลด</span> pdf ↓</span></a></div>
     </div>
   </section>
 
@@ -216,7 +219,7 @@ footer{font:.78rem var(--mono);color:var(--muted)}
     </div>
   </section>
 </main>
-<footer><span class="en">B.Sc. Computer Science, Burapha University (2026) · Chanthaburi, Thailand</span><span class="th">วท.บ. วิทยาการคอมพิวเตอร์ มหาวิทยาลัยบูรพา (2569) · จันทบุรี</span></footer>
+<footer><span class="en"><span class="nw">B.Sc. Computer Science, Burapha University (2026)</span> · <span class="nw">Chanthaburi, Thailand</span></span><span class="th"><span class="nw">วท.บ. วิทยาการคอมพิวเตอร์ มหาวิทยาลัยบูรพา (2569)</span> · <span class="nw">จันทบุรี</span></span></footer>
 </div>
 
 <nav class="dock away" id="dock" aria-label="Quick contact">
