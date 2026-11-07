@@ -8,13 +8,13 @@
 <meta property="og:title" content="Tham Kaeoket, Junior DevOps / Cloud Engineer">
 <meta property="og:description" content="Automated a 1–2 hour morning server check down to ~5 minutes across 11 production servers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
 <style>
 /* Layout: a 3D infrastructure map is the hero (nodes = projects); an info panel slides over it; a plain résumé follows for scanning and print */
 :root{
   --bg:#0c0f15; --bg2:#121722; --panel:rgba(18,23,34,.86); --ink:#e9e6dc; --muted:#98a0ae; --line:#283041;
   --amber:#f0a443; --ice:#8fb8ff; --ok:#6fcf8f;
-  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace; --sans:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace; --sans:"IBM Plex Sans","IBM Plex Sans Thai",system-ui,sans-serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -82,6 +82,8 @@ section h2{font:600 .78rem var(--mono);text-transform:uppercase;letter-spacing:.
 .skills div{min-width:0}.skills b{display:block;font:600 .82rem var(--mono);margin-bottom:4px}.skills p{margin:0;color:var(--muted)}
 .contact{display:flex;flex-wrap:wrap;gap:10px 24px;font:.9rem var(--mono)}
 footer{max-width:900px;margin:0 auto;padding-bottom:40px;font:.75rem var(--mono);color:var(--muted)}
+html[data-lang="th"] .en,html:not([data-lang="th"]) .th{display:none!important}
+html[data-lang="th"] body{line-height:1.7}
 .nogl #gl,.nogl .labels,.nogl .hint{display:none}
 .nogl .hero{height:auto;min-height:0;padding-top:120px;padding-bottom:40px}
 .nogl .headline{position:static}
@@ -94,8 +96,9 @@ footer{max-width:900px;margin:0 auto;padding-bottom:40px;font:.75rem var(--mono)
 <header class="top gut">
   <div class="brand">tham<b>@</b>skez</div>
   <nav class="links" aria-label="Main">
+    <button id="lang" type="button" aria-label="Switch language">TH</button>
     <button id="tbtn" type="button" aria-expanded="false" aria-controls="term">terminal</button>
-    <a href="#work">work</a><a href="#docs">documents</a><a href="resume.pdf">resume.pdf</a>
+    <a class="en" href="#work">work</a><a class="th" href="#work-th">ผลงาน</a><a class="en" href="#docs">documents</a><a class="th" href="#docs-th">เอกสาร</a><a class="rlink" href="resume.pdf">resume.pdf</a>
   </nav>
 </header>
 
@@ -103,11 +106,12 @@ footer{max-width:900px;margin:0 auto;padding-bottom:40px;font:.75rem var(--mono)
   <canvas id="gl" aria-label="3D map of my projects. Drag to rotate, click a node to open it."></canvas>
   <div class="labels" id="labels"></div>
   <div class="headline gut">
-    <h1>Tham Kaeoket<br><span>Junior DevOps / Cloud Engineer</span></h1>
-    <p>I write the scripts and pipelines that make repetitive operations work disappear. At my internship I cut a 1–2 hour morning server check to about 5 minutes across 11 production servers.</p>
-    <div class="hint">drag to rotate · click a node · or scroll for the plain version</div>
+    <h1><b class="en" style="font-weight:600">Tham Kaeoket</b><b class="th" style="font-weight:600">ธาม แก้วเกษ</b><br><span>Junior DevOps / Cloud Engineer</span></h1>
+    <p class="en">I write the scripts and pipelines that make repetitive operations work disappear. At my internship I cut a 1–2 hour morning server check to about 5 minutes across 11 production servers.</p>
+    <p class="th">ผมเขียน script และ pipeline ที่ทำให้งานดูแลระบบแบบซ้ำ ๆ หายไป ตอนฝึกงานผมลดเวลาตรวจเซิร์ฟเวอร์ช่วงเช้าจาก 1–2 ชั่วโมงเหลือประมาณ 5 นาที สำหรับเซิร์ฟเวอร์ Production 11 เครื่อง</p>
+    <div class="hint"><span class="en">drag to rotate · click a node · or scroll for the plain version</span><span class="th">ลากเพื่อหมุน · กดที่ node · หรือเลื่อนลงเพื่ออ่านแบบปกติ</span></div>
   </div>
-  <aside class="panel" id="panel" aria-live="polite"><button class="close" id="pclose" type="button">close</button><div id="pbody"></div></aside>
+  <aside class="panel" id="panel" aria-live="polite"><button class="close" id="pclose" type="button"><span class="en">close</span><span class="th">ปิด</span></button><div id="pbody"></div></aside>
   <div class="term" id="term">
     <div class="out" id="out" role="log"></div>
     <form id="tform" autocomplete="off"><label for="cmd">tham@skez:~$</label><input id="cmd" spellcheck="false" autocapitalize="off" placeholder="help"></form>
@@ -115,6 +119,7 @@ footer{max-width:900px;margin:0 auto;padding-bottom:40px;font:.75rem var(--mono)
 </div>
 
 <main class="gut">
+<div class="en" style="display:grid;gap:56px">
   <section id="work">
     <h2>Experience</h2>
     <div class="row">
@@ -156,6 +161,7 @@ footer{max-width:900px;margin:0 auto;padding-bottom:40px;font:.75rem var(--mono)
     <h2>Documents</h2>
     <div class="docs">
       <div class="doc"><h3>Résumé</h3><div class="meta">1 page · A4 · English</div><a class="btn" href="resume.pdf">download pdf</a></div>
+      <div class="doc"><h3>Résumé (Thai)</h3><div class="meta">1 page · A4 · ภาษาไทย</div><a class="btn" href="resume-th.pdf">download pdf</a></div>
       <div class="doc"><h3>Smart Bed Sensor, senior project report</h3><div class="meta">Thai · 332 pages · 17.6 MB · team of 7</div><a class="btn" href="docs/smart-bed-senior-project-report.pdf">download pdf</a></div>
       <div class="doc" id="coopdoc"><h3>Automate Daily Monitoring, internship report</h3><div class="meta">Thai · 116 pages · 5.9 MB</div><span class="btn">available on request</span></div>
     </div>
@@ -173,8 +179,71 @@ footer{max-width:900px;margin:0 auto;padding-bottom:40px;font:.75rem var(--mono)
     <h2>Contact</h2>
     <div class="contact"><span>tham.kaeoket@gmail.com</span><a href="https://github.com/5kez">github.com/5kez</a><a href="resume.pdf">resume.pdf</a></div>
   </section>
+</div>
+
+<div class="th" style="display:grid;gap:56px">
+  <section id="work-th">
+    <h2>ประสบการณ์ทำงาน</h2>
+    <div class="row">
+      <h3>Cloud Engineer (นักศึกษาสหกิจศึกษา) บริษัท เอ-โฮสต์ จำกัด</h3>
+      <div class="meta">พ.ย. 2568 – มี.ค. 2569 · แผนก System Management Service</div>
+      <ul>
+        <li>ทำระบบตรวจสอบเซิร์ฟเวอร์ Production ของลูกค้า 11 เครื่อง (Linux, IBM AIX) แบบอัตโนมัติ ลดเวลาจาก 1–2 ชั่วโมงเหลือประมาณ 5 นาที</li>
+        <li>workflow ด้วย n8n เชื่อมต่อผ่าน SSH และ SSL VPN เก็บข้อมูล disk, CPU/memory, tablespace, AIX error log, process และ backup</li>
+        <li>parser แปลงผลลัพธ์คำสั่งที่รูปแบบไม่แน่นอนเป็น JSON เก็บเป็น log ตามวันที่และใน PostgreSQL เพื่อดูแนวโน้มและทำรายงานรายเดือน</li>
+        <li>custom node ของ n8n ด้วย TypeScript (ssh2) สำหรับดึงผล <code>topas</code> ของ AIX</li>
+        <li>Docker Compose หลัง Nginx reverse proxy และ GitHub Actions บน self-hosted runner ที่ deploy ใหม่ทุกครั้งที่ push</li>
+      </ul>
+    </div>
+  </section>
+  <section>
+    <h2>โครงงาน</h2>
+    <div class="row">
+      <h3>Smart Bed Sensor ระบบติดตามผู้ป่วยผ่านเซนเซอร์ IoT</h3>
+      <div class="meta">โครงงานจบ · ทีม 7 คน · ส่วนที่ผมทำ: data pipeline, ระบบแจ้งเตือน, โมเดล LSTM</div>
+      <ul>
+        <li>รับข้อมูลผ่าน MQTT จาก Raspberry Pi gateway แยก topic ตามเซนเซอร์ เชื่อมต่อใหม่อัตโนมัติ และส่งขึ้นหน้าจอแบบเรียลไทม์ด้วย Socket.IO</li>
+        <li>ระบบแจ้งเตือนตามเกณฑ์รายผู้ป่วยพร้อมประวัติ บน NestJS + MySQL</li>
+        <li>เทรนโมเดล LSTM จำแนกท่านอนและการลุกจากเตียง ได้ความแม่นยำ 99% (F1 0.99) เทียบกับ neural network ธรรมดา 79%</li>
+      </ul>
+      <div class="meta"><a href="https://github.com/5kez/backend_bedproject">backend</a> · <a href="https://github.com/5kez/frontend_bedproject">frontend</a> · ระบุเครดิตทีมไว้ใน README</div>
+    </div>
+    <div class="row">
+      <h3>Server Health-Check Automation</h3>
+      <div class="meta">กำลังทำ · Terraform · Ansible · Prometheus / Grafana · GitHub Actions บน AWS</div>
+      <p style="margin:0">สร้างระบบแบบที่ทำตอนฝึกงานขึ้นใหม่ด้วยเครื่องมือมาตรฐานของสาย DevOps</p>
+    </div>
+    <div class="row">
+      <h3>mumu-auto-farm</h3>
+      <div class="meta">โปรเจกต์ส่วนตัว · Python · <a href="https://github.com/5kez/mumu-auto-farm">github</a></div>
+      <p style="margin:0">bot อัตโนมัติสำหรับงานซ้ำ ๆ บน emulator</p>
+    </div>
+  </section>
+  <section id="docs-th">
+    <h2>เอกสาร</h2>
+    <div class="docs">
+      <div class="doc"><h3>เรซูเม่ภาษาไทย</h3><div class="meta">1 หน้า · A4</div><a class="btn" href="resume-th.pdf">ดาวน์โหลด pdf</a></div>
+      <div class="doc"><h3>Résumé (English)</h3><div class="meta">1 page · A4</div><a class="btn" href="resume.pdf">download pdf</a></div>
+      <div class="doc"><h3>เล่มโครงงานจบ Smart Bed Sensor</h3><div class="meta">ภาษาไทย · 332 หน้า · 17.6 MB · ทีม 7 คน</div><a class="btn" href="docs/smart-bed-senior-project-report.pdf">ดาวน์โหลด pdf</a></div>
+      <div class="doc"><h3>เล่มรายงานสหกิจศึกษา</h3><div class="meta">ภาษาไทย · 116 หน้า · 5.9 MB</div><span class="btn">ขอดูได้เมื่อต้องการ</span></div>
+    </div>
+  </section>
+  <section>
+    <h2>ทักษะ</h2>
+    <div class="skills">
+      <div><b>Cloud &amp; DevOps</b><p>Docker, Docker Compose, Nginx, GitHub Actions, Linux, IBM AIX, SSH, VPN</p></div>
+      <div><b>Scripting</b><p>Bash, Python, JavaScript / TypeScript, n8n</p></div>
+      <div><b>Data &amp; messaging</b><p>PostgreSQL, MySQL, MQTT, WebSockets, REST</p></div>
+      <div><b>กำลังเรียน</b><p>AWS, Terraform, Ansible, Prometheus / Grafana</p></div>
+    </div>
+  </section>
+  <section>
+    <h2>ติดต่อ</h2>
+    <div class="contact"><span>tham.kaeoket@gmail.com</span><a href="https://github.com/5kez">github.com/5kez</a><a href="resume-th.pdf">resume-th.pdf</a></div>
+  </section>
+</div>
 </main>
-<footer class="gut">B.Sc. Computer Science, Burapha University (2026) · Chanthaburi, Thailand</footer>
+<footer class="gut"><span class="en">B.Sc. Computer Science, Burapha University (2026) · Chanthaburi, Thailand</span><span class="th">วท.บ. วิทยาการคอมพิวเตอร์ มหาวิทยาลัยบูรพา (2569) · จันทบุรี</span></footer>
 
 <script type="module">
 const N = [
@@ -193,12 +262,24 @@ const N = [
  {id:"docs",label:"documents",sub:"pdf",pos:[2.4,-0.6,-3.1],shape:"doc",k:"Downloads",t:"Documents",m:"résumé and project reports",
   body:"<ul><li><a href='resume.pdf'>Résumé, 1 page</a></li><li><a href='docs/smart-bed-senior-project-report.pdf'>Smart Bed senior project report (17.6 MB)</a></li><li>Internship report: available on request</li></ul>",tags:["pdf"]}
 ];
+const TH={
+ tham:{k:"เกี่ยวกับผม",t:"ธาม แก้วเกษ",m:"จันทบุรี · วท.บ. วิทยาการคอมพิวเตอร์ มหาวิทยาลัยบูรพา (2569)",body:"<p>Junior DevOps / Cloud Engineer ชอบเขียน script ที่ลดงานซ้ำ ๆ และกำลังเรียน AWS, Terraform และ Ansible โดยสร้างระบบที่ทำตอนฝึกงานขึ้นใหม่</p>"},
+ automonitor:{k:"ฝึกงาน · A-HOST",t:"Automate Daily Monitoring",m:"พ.ย. 2568 – มี.ค. 2569 · พัฒนาคนเดียว",metrics:[["1–2 ชม. → 5 นาที","ตรวจเซิร์ฟเวอร์ช่วงเช้า"],["11","เซิร์ฟเวอร์ Production"]],body:"<ul><li>workflow n8n ผ่าน SSH + SSL VPN ไปยังเซิร์ฟเวอร์ Linux และ AIX</li><li>parser แปลงผลลัพธ์เป็น JSON เก็บใน PostgreSQL</li><li>dashboard React พร้อมเกณฑ์แจ้งเตือนและรายงาน PDF</li><li>Docker Compose, Nginx, GitHub Actions self-hosted runner</li></ul>"},
+ smartbed:{k:"โครงงานจบ · ทีม 7 คน",t:"Smart Bed Sensor",m:"ส่วนที่ผมทำ: data pipeline, ระบบแจ้งเตือน, LSTM",metrics:[["99%","ความแม่นยำ LSTM"],["5","คลาสท่านอน"]],body:"<ul><li>รับข้อมูล MQTT จาก Raspberry Pi และส่งขึ้นหน้าจอด้วย Socket.IO</li><li>ระบบแจ้งเตือนบน NestJS + MySQL</li><li>LSTM ดีกว่า NN (79%) และ SVM (25%)</li></ul><p class='meta'><a href='docs/smart-bed-senior-project-report.pdf'>เล่มรายงาน (pdf)</a> · <a href='https://github.com/5kez/backend_bedproject'>โค้ด</a></p>"},
+ healthcheck:{k:"กำลังทำ",t:"Server Health-Check Automation",m:"Terraform · Ansible · Prometheus/Grafana · AWS",body:"<p>Terraform สร้างเซิร์ฟเวอร์ Ansible ติดตั้งตัวเก็บข้อมูล Prometheus และ Grafana แจ้งเตือน และ GitHub Actions รัน plan กับ lint</p>"},
+ mumu:{k:"โปรเจกต์ส่วนตัว",t:"mumu-auto-farm",m:"Python",body:"<p>bot อัตโนมัติสำหรับงานซ้ำ ๆ บน emulator <a href='https://github.com/5kez/mumu-auto-farm'>github</a></p>"},
+ docs:{k:"ดาวน์โหลด",t:"เอกสาร",m:"เรซูเม่และเล่มรายงาน",body:"<ul><li><a href='resume-th.pdf'>เรซูเม่ภาษาไทย</a> · <a href='resume.pdf'>English</a></li><li><a href='docs/smart-bed-senior-project-report.pdf'>เล่มโครงงานจบ Smart Bed (17.6 MB)</a></li><li>เล่มสหกิจศึกษา: ขอดูได้เมื่อต้องการ</li></ul>"}
+};
+let LANG="en";try{LANG=localStorage.getItem("lang")||((navigator.language||"").startsWith("th")?"th":"en")}catch(e){}
+let current=null;
+function setLang(l){LANG=l;document.documentElement.dataset.lang=l;document.documentElement.lang=l;document.getElementById("lang").textContent=l==="th"?"EN":"TH";document.querySelectorAll(".rlink").forEach(a=>{a.href=l==="th"?"resume-th.pdf":"resume.pdf";a.textContent=l==="th"?"resume-th.pdf":"resume.pdf"});try{localStorage.setItem("lang",l)}catch(e){}if(current&&panel.classList.contains("open"))openPanel(current)}
 const E=[["tham","automonitor"],["tham","smartbed"],["tham","healthcheck"],["tham","mumu"],["tham","docs"],["automonitor","healthcheck"],["smartbed","automonitor"]];
 
 const panel=document.getElementById("panel"),pbody=document.getElementById("pbody");
-function openPanel(n){pbody.innerHTML=`<div class="k">${n.k}</div><h2>${n.t}</h2><div class="meta">${n.m}</div>`+(n.metrics?`<div class="metrics">${n.metrics.map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("")}</div>`:"")+n.body+`<div class="tags">${n.tags.map(t=>`<span>${t}</span>`).join("")}</div>`;panel.classList.add("open");document.querySelectorAll(".lbl").forEach(l=>l.classList.toggle("on",l.dataset.id===n.id));window.__focus&&window.__focus(n)}
+function openPanel(n0){current=n0;const n=LANG==="th"&&TH[n0.id]?{...n0,...TH[n0.id]}:n0;pbody.innerHTML=`<div class="k">${n.k}</div><h2>${n.t}</h2><div class="meta">${n.m}</div>`+(n.metrics?`<div class="metrics">${n.metrics.map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("")}</div>`:"")+n.body+`<div class="tags">${n.tags.map(t=>`<span>${t}</span>`).join("")}</div>`;panel.classList.add("open");document.querySelectorAll(".lbl").forEach(l=>l.classList.toggle("on",l.dataset.id===n.id));window.__focus&&window.__focus(n0)}
 document.getElementById("pclose").onclick=()=>{panel.classList.remove("open");document.querySelectorAll(".lbl").forEach(l=>l.classList.remove("on"));window.__focus&&window.__focus(null)};
 
+document.getElementById("lang").onclick=()=>setLang(LANG==="th"?"en":"th");
 /* terminal */
 const out=document.getElementById("out"),cmd=document.getElementById("cmd"),term=document.getElementById("term"),tbtn=document.getElementById("tbtn");
 const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
@@ -214,6 +295,7 @@ const C={help:()=>pr("whoami · ls · open &lt;node&gt; · resume · contact · 
 document.getElementById("tform").addEventListener("submit",e=>{e.preventDefault();const r=cmd.value.trim();cmd.value="";pr(`<span class="p">$</span> ${esc(r)}`);if(!r)return;const[c,...a]=r.split(/\s+/);(C[c.toLowerCase()]||(()=>pr(`${esc(c)}: command not found`,"dim")))(a)});
 tbtn.onclick=()=>{const o=term.classList.toggle("open");tbtn.setAttribute("aria-expanded",o);if(o){if(!out.childElementCount){pr("type help, or try: open automonitor","dim")}cmd.focus()}};
 
+setLang(LANG);
 /* 3D */
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 function hasGL(){try{const c=document.createElement("canvas");return !!(c.getContext("webgl2")||c.getContext("webgl"))}catch(e){return false}}
