@@ -1,0 +1,1 @@
+import{Q as t}from"./QPage-B1WyCzrW.js";import{_ as o,x as r,m as s,n as a,q as n}from"./index-BfNZASJk.js";const c={};function f(i,e){return s(),r(t,{class:"flex flex-center login-container"},{default:a(()=>e[0]||(e[0]=[n("Noti")])),_:1})}const _=o(c,[["render",f]]);export{_ as default};

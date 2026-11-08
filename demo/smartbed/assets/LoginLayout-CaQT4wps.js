@@ -1,0 +1,1 @@
+import{Q as a,a as r}from"./QLayout-CSzMioTv.js";import{_ as n,G as s,x as c,m as _,n as e,f as o}from"./index-BfNZASJk.js";const f={};function i(l,u){const t=s("router-view");return _(),c(r,{view:"lHh Lpr lFf",style:{background:"beige"}},{default:e(()=>[o(a,null,{default:e(()=>[o(t)]),_:1})]),_:1})}const d=n(f,[["render",i]]);export{d as default};

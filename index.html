@@ -148,6 +148,13 @@ footer{font:.78rem var(--mono);color:var(--muted)}
         <div style="display:flex;gap:16px;flex-wrap:wrap"><a class="dl" href="demo/monitoring/"><span class="en">open demo →</span><span class="th">เปิด demo →</span></a><a class="dl" href="https://github.com/5kez/automate-daily-monitoring"><span class="en">source →</span><span class="th">ดูโค้ด →</span></a></div>
       </div>
       <div class="doc">
+        <h3>Smart Bed Sensor</h3>
+        <div class="meta"><span class="en">Vue/Quasar · NestJS API ported to the browser · fictional data</span><span class="th">Vue/Quasar · API ของ NestJS ที่ย้ายมารันในเบราว์เซอร์ · ข้อมูลสมมติ</span></div>
+        <p style="margin:0;color:var(--muted);font-size:.95rem" class="en">Hospital bed monitoring: live SpO2, heart rate and posture with real-time alerts. Log in as nurse, admin, reception or technician; every button works. Full stack (MQTT + MySQL + sensor simulator) runs with one docker compose command.</p>
+        <p style="margin:0;color:var(--muted);font-size:.95rem" class="th">ระบบติดตามผู้ป่วยบนเตียง: ค่า SpO2 ชีพจร และท่านอนแบบเรียลไทม์ พร้อมแจ้งเตือน เข้าได้ทั้งบทบาทพยาบาล ผู้ดูแลระบบ ประชาสัมพันธ์ และช่าง ทุกปุ่มใช้งานได้จริง ส่วนระบบเต็ม (MQTT + MySQL + ตัวจำลองเซนเซอร์) รันได้ด้วย docker compose คำสั่งเดียว</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap"><a class="dl" href="demo/smartbed/"><span class="en">open demo →</span><span class="th">เปิด demo →</span></a><a class="dl" href="https://github.com/5kez/backend_bedproject#-try-it"><span class="en">run full stack →</span><span class="th">รันระบบเต็ม →</span></a></div>
+      </div>
+      <div class="doc">
         <h3>skez.codes</h3>
         <div class="meta"><span class="en">this site · static · GitHub Pages · custom domain</span><span class="th">เว็บนี้ · static · GitHub Pages · โดเมนของตัวเอง</span></div>
         <p style="margin:0;color:var(--muted);font-size:.95rem" class="en">Bilingual portfolio with a working terminal. Moving to AWS S3 + CloudFront with Terraform next.</p>
@@ -196,7 +203,7 @@ footer{font:.78rem var(--mono);color:var(--muted)}
         <li>ระบบ<span class="nw">แจ้งเตือน</span>ตามเกณฑ์รายผู้ป่วยพร้อม<span class="nw">ประวัติ</span> บน NestJS + MySQL</li>
         <li>เทรนโมเดล LSTM จำแนกท่านอนและ<span class="nw">การลุกจากเตียง</span> ได้<span class="nw">ความแม่นยำ</span> 99% (F1&nbsp;0.99) เทียบกับ neural network <span class="nw">ธรรมดา</span> 79%</li>
       </ul>
-      <div class="meta"><a href="https://github.com/5kez/backend_bedproject">backend</a> · <a href="https://github.com/5kez/frontend_bedproject">frontend</a> · <span class="en">team credit in each README</span><span class="th">ระบุเครดิตทีมไว้ใน README</span></div>
+      <div class="meta"><a href="demo/smartbed/">demo</a> · <a href="https://github.com/5kez/backend_bedproject">backend</a> · <a href="https://github.com/5kez/frontend_bedproject">frontend</a> · <span class="en">team credit in each README</span><span class="th">ระบุเครดิตทีมไว้ใน README</span></div>
     </div>
     <div class="card">
       <h3>Server Health-Check Automation</h3>
@@ -279,20 +286,20 @@ function toast(t){const d=document.createElement("div");d.className="toast";d.te
 document.getElementById("copymail").onclick=()=>{const m="tham.kaeoket@gmail.com";(navigator.clipboard?navigator.clipboard.writeText(m):Promise.reject()).then(()=>toast(LANG==="th"?"คัดลอกอีเมลแล้ว":"Email copied")).catch(()=>toast(m))};
 /* terminal */
 const P={automonitor:["Automate Daily Monitoring (internship)","problem   1–2 h of manual SSH checks every morning, copied into Excel","solution  n8n over SSH + VPN → parse → JSON → PostgreSQL → React dashboard","scale     11 production servers, Linux and IBM AIX","result    ~5 minutes per morning, no manual data entry"],
- smartbed:["Smart Bed Sensor (senior project, team of 7)","my part   MQTT pipeline, Socket.IO gateways, alerting, LSTM model","model     LSTM 99% · NN 79% · SVM 25%","stack     NestJS · MySQL · MQTT · Raspberry Pi · Keras"],
+ smartbed:["Smart Bed Sensor (senior project, team of 7)","my part   MQTT pipeline, Socket.IO gateways, alerting, LSTM model","model     LSTM 99% · NN 79% · SVM 25%","stack     NestJS · MySQL · MQTT · Raspberry Pi · Keras","demo      demo smartbed  (in-browser, fictional data)"],
  healthcheck:["Server Health-Check Automation (in progress)","plan      Terraform → EC2 · Ansible → collectors · Prometheus/Grafana → alerts"],
  "mumu-auto-farm":["mumu-auto-farm (personal)","python    automation bot for repetitive emulator workflows"]};
 const out=document.getElementById("out"),cmd=document.getElementById("cmd");
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 function pr(h,c){const d=document.createElement("div");if(c)d.className=c;d.innerHTML=h;out.append(d);out.scrollTop=out.scrollHeight}
-const C={help:()=>pr("whoami · ls projects · cat &lt;project&gt; · demo · skills · contact · resume · clear"),
+const C={help:()=>pr("whoami · ls projects · cat &lt;project&gt; · demo &lt;monitoring|smartbed&gt; · skills · contact · resume · clear"),
  whoami:()=>pr("Tham Kaeoket, Junior DevOps / Cloud Engineer, Thailand.\nI like scripts that delete boring work."),
  ls:()=>pr(Object.keys(P).map(k=>`<span class="ok">${k}/</span>`).join("  ")),
  cat:a=>{const p=P[(a[0]||"").replace(/\/$/,"")];p?pr(`<span class="p"># ${p[0]}</span>\n`+p.slice(1).map(esc).join("\n")):pr(`cat: ${esc(a[0]||"")}: try ls projects`,"dim")},
  skills:()=>pr("cloud/devops  docker compose nginx github-actions linux aix ssh\nscripting     bash python typescript n8n\nlearning      aws terraform ansible prometheus grafana"),
  contact:()=>pr('call   <a href="tel:+66624739152">062-473-9152</a>\nemail  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tham.kaeoket@gmail.com" target="_blank" rel="noopener">tham.kaeoket@gmail.com</a>\ndiscord <a href="https://discord.com/users/429980296604155906" target="_blank" rel="noopener">429980296604155906</a>'),
  resume:()=>pr(`<a href="${LANG==="th"?"resume-th.pdf":"resume.pdf"}">${LANG==="th"?"resume-th.pdf":"resume.pdf"}</a>`),
- demo:()=>{pr('opening demo/monitoring ...','dim');setTimeout(()=>location.href='demo/monitoring/',400)},
+ demo:a=>{const d={monitoring:"demo/monitoring/",smartbed:"demo/smartbed/"};const k=d[a[0]]?a[0]:null;if(!k){pr('demo monitoring · demo smartbed','dim');return}pr(`opening ${d[k]} ...`,'dim');setTimeout(()=>location.href=d[k],400)},
  clear:()=>{out.innerHTML=""},sudo:()=>pr("nice try. this incident will be reported.","dim")};
 function run(line){const r=line.trim();pr(`<span class="p">tham@skez:~$</span> ${esc(r)}`);if(!r)return;const[c,...a]=r.split(/\s+/);(C[c.toLowerCase()]||(()=>pr(`${esc(c)}: command not found. type <span class="p">help</span>`,"dim")))(a)}
 document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();run(cmd.value);cmd.value=""});
