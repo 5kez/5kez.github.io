@@ -274,13 +274,14 @@ footer{font:.78rem var(--mono);color:var(--muted)}
 
 <script>
 /* language */
-let LANG="en";try{LANG=localStorage.getItem("lang")||((navigator.language||"").startsWith("th")?"th":"en")}catch(e){}
+/* English first; Thai only when the visitor picks it (saved under a new key, so the old auto-detected choice is ignored) */
+let LANG="en";try{LANG=localStorage.getItem("lang-choice")==="th"?"th":"en"}catch(e){}
 function setLang(l){LANG=l;const h=document.documentElement;h.dataset.lang=l;h.lang=l;document.getElementById("lang").textContent=l==="th"?"EN":"TH";
   document.querySelectorAll(".rlink").forEach(a=>a.href=l==="th"?"resume-th.pdf":"resume.pdf");
   const subj=encodeURIComponent(l==="th"?"ติดต่อเรื่องงาน":"Job opportunity");
   document.querySelectorAll("a.gmail").forEach(a=>a.href="https://mail.google.com/mail/?view=cm&fs=1&to=tham.kaeoket@gmail.com&su="+subj);
-  try{localStorage.setItem("lang",l)}catch(e){}}
-document.getElementById("lang").onclick=()=>setLang(LANG==="th"?"en":"th");setLang(LANG);
+}
+document.getElementById("lang").onclick=()=>{setLang(LANG==="th"?"en":"th");try{localStorage.setItem("lang-choice",LANG)}catch(e){}};setLang(LANG);
 /* copy email */
 function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.append(d);setTimeout(()=>d.remove(),1800)}
 document.getElementById("copymail").onclick=()=>{const m="tham.kaeoket@gmail.com";(navigator.clipboard?navigator.clipboard.writeText(m):Promise.reject()).then(()=>toast(LANG==="th"?"คัดลอกอีเมลแล้ว":"Email copied")).catch(()=>toast(m))};
